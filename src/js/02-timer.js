@@ -3,6 +3,7 @@ import "flatpickr/dist/flatpickr.min.css";
 
 const refs = {
   startBtn: document.querySelector("[data-start]"),
+  stopBtn: document.querySelector("[data-stop]"),
   days: document.querySelector("[data-days]"),
   hours: document.querySelector("[data-hours]"),
   minutes: document.querySelector("[data-minutes]"),
@@ -11,14 +12,15 @@ const refs = {
 
 // console.log("startBtn:::", refs.startBtn);
 let selectedDate = null;
+let intervalId = null;
 
 const options = {
   enableTime: true,
   time_24hr: true,
   defaultDate: new Date(),
   minuteIncrement: 1,
-  dateformat: "U",
-  onChange(selectedDates, dateStr) {
+
+  onChange(selectedDates) {
     selectedDate = selectedDates[0];
     remainingTime = selectedDate - Date.now();
 
@@ -39,9 +41,10 @@ const options = {
 flatpickr("#dateTimePicker", options); // робить вибирач дати у полі інпут (вимагається по документації) з таким селектором
 
 refs.startBtn.addEventListener("click", startTimer);
+refs.stopBtn.addEventListener("click", stopTimer);
 
 function startTimer() {
-  setInterval(() => {
+  intervalId = setInterval(() => {
     remainingTime = selectedDate - Date.now();
     const { days, hours, minutes, seconds } = convertMs(remainingTime);
     refs.days.textContent = days;
@@ -49,6 +52,10 @@ function startTimer() {
     refs.minutes.textContent = minutes;
     refs.seconds.textContent = seconds;
   }, 1000);
+}
+
+function stopTimer() {
+  clearInterval(intervalId);
 }
 
 function convertMs(ms) {
