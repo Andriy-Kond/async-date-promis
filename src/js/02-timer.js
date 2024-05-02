@@ -23,7 +23,7 @@ const options = {
 
   onChange(selectedDates) {
     selectedDate = selectedDates[0];
-    remainingTime = selectedDate - Date.now();
+    const remainingTime = selectedDate - Date.now();
 
     if (remainingTime <= 0) {
       // window.alert("Please choose a date in the future");
@@ -32,11 +32,7 @@ const options = {
       refs.startBtn.disabled = true;
     } else {
       refs.startBtn.disabled = false;
-      const { days, hours, minutes, seconds } = convertMs(remainingTime);
-      refs.days.textContent = days;
-      refs.hours.textContent = hours;
-      refs.minutes.textContent = minutes;
-      refs.seconds.textContent = seconds;
+      getRemainingTime(remainingTime);
     }
   },
 };
@@ -48,13 +44,17 @@ refs.stopBtn.addEventListener("click", stopTimer);
 
 function startTimer() {
   intervalId = setInterval(() => {
-    remainingTime = selectedDate - Date.now();
-    const { days, hours, minutes, seconds } = convertMs(remainingTime);
-    refs.days.textContent = days;
-    refs.hours.textContent = hours;
-    refs.minutes.textContent = minutes;
-    refs.seconds.textContent = seconds;
+    const remainingTime = selectedDate - Date.now();
+    getRemainingTime(remainingTime);
   }, 1000);
+}
+
+function getRemainingTime(remainingTime) {
+  const { days, hours, minutes, seconds } = convertMs(remainingTime);
+  refs.days.textContent = days;
+  refs.hours.textContent = hours;
+  refs.minutes.textContent = minutes;
+  refs.seconds.textContent = seconds;
 }
 
 function stopTimer() {

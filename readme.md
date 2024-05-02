@@ -120,3 +120,23 @@ return { days, hours, minutes, seconds };
 Напиши функцію addLeadingZero(value), яка використовує метод padStart() і перед рендерингом інтефрейсу форматує значення.
 
 Для відображення повідомлень користувачеві, замість window.alert(), використовуй бібліотеку notiflix (https://github.com/notiflix/Notiflix#readme).
+
+# Завдання 3 - генератор промісів
+
+HTML містить розмітку форми, в поля якої користувач буде вводити першу затримку в мілісекундах, крок збільшення затримки для кожного промісу після першого і кількість промісів, яку необхідно створити.
+
+    <form class="form">
+      <label>
+        First delay (ms)
+        <input type="number" name="delay" required />
+      </label>
+      <label>
+        Delay step (ms)
+        <input type="number" name="step" required />
+      </label>
+      <label>
+        Amount
+        <input type="number" name="amount" required />
+      </label>
+      <button type="submit">Create promises</button>
+    </form>
