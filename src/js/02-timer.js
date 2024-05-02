@@ -12,7 +12,6 @@ const refs = {
   seconds: document.querySelector("[data-seconds]"),
 };
 
-// console.log("startBtn:::", refs.startBtn);
 let selectedDate = null;
 let intervalId = null;
 
@@ -24,9 +23,7 @@ const options = {
 
   onChange(selectedDates) {
     selectedDate = selectedDates[0];
-    console.log("onChange >> selectedDate:::", selectedDate);
     const remainingTime = selectedDate - Date.now();
-    console.log("onChange >> remainingTime:::", remainingTime);
 
     if (remainingTime <= 0) {
       // window.alert("Please choose a date in the future");
@@ -52,8 +49,8 @@ function startTimer() {
   }, 1000);
 }
 
-function getRemainingTime(remainingTime) {
-  const { days, hours, minutes, seconds } = convertMs(remainingTime);
+function getRemainingTime(time) {
+  const { days, hours, minutes, seconds } = convertMs(time);
   refs.days.textContent = days;
   refs.hours.textContent = hours;
   refs.minutes.textContent = minutes;
