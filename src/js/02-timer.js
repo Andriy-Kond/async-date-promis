@@ -1,6 +1,7 @@
 import flatpickr from "flatpickr";
 import { Notify } from "notiflix/build/notiflix-notify-aio";
-import "flatpickr/dist/flatpickr.min.css";
+// import "flatpickr/dist/flatpickr.min.css";
+import "flatpickr/dist/themes/material_blue.css";
 
 const refs = {
   startBtn: document.querySelector("[data-start]"),
@@ -23,7 +24,9 @@ const options = {
 
   onChange(selectedDates) {
     selectedDate = selectedDates[0];
+    console.log("onChange >> selectedDate:::", selectedDate);
     const remainingTime = selectedDate - Date.now();
+    console.log("onChange >> remainingTime:::", remainingTime);
 
     if (remainingTime <= 0) {
       // window.alert("Please choose a date in the future");
