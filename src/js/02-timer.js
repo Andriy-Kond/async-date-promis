@@ -1,4 +1,5 @@
 import flatpickr from "flatpickr";
+import { Notify } from "notiflix/build/notiflix-notify-aio";
 import "flatpickr/dist/flatpickr.min.css";
 
 const refs = {
@@ -25,7 +26,9 @@ const options = {
     remainingTime = selectedDate - Date.now();
 
     if (remainingTime <= 0) {
-      window.alert("Please choose a date in the future");
+      // window.alert("Please choose a date in the future");
+      Notify.warning("Please choose a date in the future");
+
       refs.startBtn.disabled = true;
     } else {
       refs.startBtn.disabled = false;
