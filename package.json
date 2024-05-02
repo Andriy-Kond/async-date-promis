@@ -1,21 +1,11 @@
 {
-  "name": "parcel-project-template",
+  "name": "async-date-promis",
   "version": "2.0.0",
   "description": "",
   "homepage": "https://andriy-kond.github.io/async-date-promis",
   "scripts": {
     "start": "parcel src/*.html",
     "build": "parcel build src/*.html --public-url /async-date-promis/"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/goitacademy/parcel-project-template.git"
-  },
-  "keywords": [],
-  "author": "Alexander Repeta <alexander.repeta@gmail.com>",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/goitacademy/parcel-project-template/issues"
   },
   "dependencies": {
     "flatpickr": "^4.6.13",
