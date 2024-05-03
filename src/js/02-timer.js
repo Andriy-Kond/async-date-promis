@@ -28,7 +28,7 @@ const options = {
     const remainingTime = selectedDate - Date.now();
 
     if (remainingTime <= 0) {
-      // window.alert("Please choose a date in the future");
+      window.alert("Please choose a date in the future");
       Notify.warning("Please choose a date in the future");
 
       refs.startBtn.disabled = true;
